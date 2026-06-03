@@ -176,7 +176,7 @@
 
     <header>
         <h1>Data Science and<br>Machine Learning</h1>
-        <p>Day 4</p>
+        <p>Day 2</p>
         <a href="#content" class="link-button" style="margin-top: 30px;">Start Learning ↓</a>
     </header>
 
@@ -184,71 +184,133 @@
         
         <!-- Topics -->
         <section>
-            <h2>Topics for Day 4</h2>
+            <h2>Topics for Day 2</h2>
             <ul>
-                <li>Core DataStructures</li>
-                <li>Lists</li>
+                <li>Git Repository Setup</li>
+                <li>SSH Key Integration</li>
+                <li>GitHub Authentication</li>
+                <li>SSH Remote Configuration</li>
             </ul>
         </section>
 
+        <!-- Git Quick Review -->
         <section>
-            <h2>What Are Data Structures</h2>
-             <ul>
-                <li>Methods to store and organize data</li>
-                <li>Enable efficient access and modification</li>
-                <li>Python provides built-in, optimized data structures</li>
-                <li>Essential for real-world programming</li>
+            <h2>Git Quick Review</h2>
+            <p>Before diving into SSH, let's recap the essential workflow:</p>
+            <ul>
+                <li><code>git init</code> — Start a new local repo</li>
+                <li><code>git clone</code> — Copy a remote repo</li>
+                <li><code>git add .</code> — Stage your changes</li>
+                <li><code>git commit -m "message"</code> — Save your snapshot</li>
+                <li><code>git push</code> — Upload to remote</li>
+                <li><code>git pull</code> — Download from remote</li>
             </ul>
-              
+            <div style="text-align: center;">
+                <a href="https://learngitbranching.js.org/" target="_blank" class="link-button">Git Playground</a>
+            </div>
         </section>
 
+        <!-- SSH Concept -->
         <section>
-            <h2>List</h2>
+            <h2>SSH Key Concept</h2>
             <div class="info-card">
-                <ul>
-                <li>Ordered and mutable collection</li>
-                <li>Allows duplicate values</li>
-                <li>Stores mixed data types</li>
-            </ul>
-            <code class="code-block">numbers = [1, 2, 3]<br> print(numbers) </code>
-             <code class="code-block">Output: <br> [1,2,3]</code>
-            <code class="code-block">numbers.append(4) <br> print(numbers)</code>
-            <code class="code-block">Output: <br> [1,2,3,4]</code>
-        </section>
-  <section>
-            <h2>List</h2>
-            <div class="info-card">
-                <ul>
-                <li>Ordered and immutable collection</li>
-                <li>Faster than lists</li>
-                <li>Data cannot be changed</li>
-            </ul>
-            <code class="code-block">point = (10, 20)<br> print(point) </code>
-             <code class="code-block">Output: <br> (10, 20)</code>
-        </section>
-        <section>
-             <h2>Set</h2>
-            <div class="info-card">
-                <ul>
-                <li>UOrdered collection</li>
-                <li>No duplicate values</li>
-                <li>Supports set operations</li>
-            </ul>
-            <code class="code-block">unique = {1, 2, 3}<br> print(unique) </code>
-             <code class="code-block">Output: <br> {1, 2, 3}</code>
+                <p><strong>SSH (Secure Shell)</strong> allows you to connect to GitHub without entering your username and password every time you push or pull.</p>
+            </div>
+            <div class="grid">
+                <div>
+                    <h3>🔑 Private Key</h3>
+                    <p>Stays <strong>local</strong> on your computer. Never share this with anyone.</p>
+                </div>
+                <div>
+                    <h3>🌐 Public Key</h3>
+                    <p>Added to the <strong>Git platform</strong> (GitHub/GitLab). It acts as the "lock" that your private key opens.</p>
+                </div>
+            </div>
         </section>
 
+        <!-- Config -->
         <section>
-              <h2>Python Dictionary</h2>
-            <div class="info-card">
-                <ul>
-                <li>Stores key-value pairs</li>
-                <li>Keys must be unique</li>
-                <li>Fast lookup</li>
-            </ul>
-            <code class="code-block">student = {'name': 'Ram', 'age': 20}<br> print(unique.items()) </code>
-             <code class="code-block">Output: <br> {1, 2, 3}</code>
+            <h2>1. User Configuration</h2>
+            <p>Set your identity so your commits are attributed to you.</p>
+            <h3>Check existing config:</h3>
+            <code class="code-block">git config --global user.name</code>
+            <code class="code-block">git config --global user.email</code>
+            
+            <h3>Set your identity:</h3>
+            <code class="code-block">git config --global user.email "your_email@example.com"</code>
+            <code class="code-block">git config --global user.name "Your GitHub Username"</code>
         </section>
+
+        <!-- SSH Generation -->
+        <section>
+            <h2>2. Generating & Starting SSH Key</h2>
+            <h3>Generate the Key</h3>
+            <p>Run this command in your terminal (replace with your email):</p>
+            <code class="code-block">ssh-keygen -t ed25519 -C "your_email@example.com"</code>
+            
+            <h3>Start the SSH Agent</h3>
+            <p>This manages your keys in the background:</p>
+            <code class="code-block">eval $(ssh-agent -s)</code>
+            <code class="code-block">ssh-add ~/.ssh/id_ed25519</code>
+
+            <h3>Copy the Public Key</h3>
+            <p>You need to copy the content of the <code>.pub</code> file to paste it into GitHub:</p>
+            <code class="code-block">cat ~/.ssh/id_ed25519.pub</code>
+        </section>
+
+        <!-- GitHub Integration -->
+        <section>
+            <h2>3. Adding Key to GitHub</h2>
+            <p>Follow these steps in your browser:</p>
+            <ol style="padding-left: 20px; line-height: 2;">
+                <li>Go to your <strong>Repository</strong> on GitHub.</li>
+                <li>Click <strong>Settings</strong>.</li>
+                <li>Navigate to <strong>Deploy keys</strong> (on the left sidebar).</li>
+                <li>Click <strong>Add deploy key</strong>.</li>
+                <li>Paste your public key and save.</li>
+            </ol>
+        </section>
+
+        <!-- SSH Remotes -->
+        <section>
+            <h2>4. Using SSH for Remotes</h2>
+            <h3>Clone a Repo via SSH</h3>
+            <p>Instead of HTTPS, use the SSH URL:</p>
+            <code class="code-block">git clone git@github.com:user/repo.git</code>
+
+            <h3>Change existing Remote from HTTPS to SSH</h3>
+            <p>If you already cloned via HTTPS, switch to SSH with this command:</p>
+            <code class="code-block">git remote set-url origin git@github.com:user/repo.git</code>
+        </section>
+
+        <!-- Cheat Sheet -->
+        <section>
+            <h2>Git Master Cheat Sheet</h2>
+            <div class="grid">
+                <div>
+                    <h3>Basic Workflow</h3>
+                    <ul>
+                        <li><code>git status</code> — Check state</li>
+                        <li><code>git add .</code> — Stage all</li>
+                        <li><code>git commit -m "..."</code> — Save</li>
+                        <li><code>git push -u origin &lt;branch&gt;</code> — Upload</li>
+                        <li><code>git pull origin main</code> — Update</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3>Branching & Stashing</h3>
+                    <ul>
+                        <li><code>git branch</code> — List branches</li>
+                        <li><code>git checkout -b &lt;name&gt;</code> — New branch</li>
+                        <li><code>git checkout &lt;name&gt;</code> — Switch branch</li>
+                        <li><code>git branch -D &lt;name&gt;</code> — Delete branch</li>
+                        <li><code>git stash</code> — Temporarily save work</li>
+                        <li><code>git stash pop</code> — Restore work</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
     </div>
 
     <footer style="text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem;">
