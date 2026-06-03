@@ -1,6 +1,6 @@
-# DS ML courseworks
+# DS ML Course Reference | Data Science and Machine Learning with Python | 11
 
-Course Reference | Data Science and Machine Learning with Python | 11
+
 
 
 Day 00: Orientation , CV, Linkedin session 
