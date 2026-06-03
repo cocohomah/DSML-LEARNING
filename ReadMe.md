@@ -3,26 +3,26 @@
 
 
 
-Day 00: Orientation , CV, Linkedin session 
+Day **: Orientation , CV, Linkedin session 
 
-Day 01: Introduction , Python virtual environment
+Day **: Introduction , Python virtual environment
 
-Day 02: Git Repository Setup with SSH Key Integration
+Day **: Git Repository Setup with SSH Key Integration
 
-Day 03:Python Number , String
+Day 01:Python Number , String
 
-Day 04: Python core data structure, Advanced Lists 
+Day 02: Python core data structure, Advanced Lists 
 
-Day 05:Python  Tuples, Sets
+Day 03:Python  Tuples, Sets
 
-Day 06: Python Dictionaries
+Day 04: Python Dictionaries
 
-Day 07:condition statement  (if else)
+Day 05: Condition statement (if else)
 
-Day 08: python loop (while , for loop)
+Day 06: Python loop (while , for loop)
 
-Day9 : python function
+Day 07: Python (User Defined Function )
 
-day 10: Python Function(Buildin)
+day 08: Python Function (BuiltIn Function)
 
-Day 11 : python function continue
+Day 09 : Python Function (Docstring, **args & **kwargs)
