@@ -1,4 +1,4 @@
-# DS ML Course Reference | Data Science and Machine Learning with Python | 11
+# DS ML Course Reference | Data Science and Machine Learning with Python | 
 
 
 
