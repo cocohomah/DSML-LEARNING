@@ -1,0 +1,260 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science and Machine Learning - Day 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4a90e2;
+            --dark-blue: #2563eb;
+            --light-blue: #e0f2fe;
+            --accent-blue: #1e3a8a;
+            --sky-blue: #0ea5e9;
+            --accent-color: #1e293b;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-blue);
+            color: var(--accent-color);
+            line-height: 1.6;
+        }
+
+        /* Background Decorative Elements */
+        .bg-blob {
+            position: fixed;
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0.5;
+            border-radius: 50%;
+        }
+        .blob-1 { width: 400px; height: 400px; background: var(--primary-blue); top: -100px; left: -100px; }
+        .blob-2 { width: 300px; height: 300px; background: var(--sky-blue); bottom: -50px; right: -50px; }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-blue) 100%);
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            color: var(--accent-blue);
+        }
+
+        header p {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--dark-blue);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow);
+            border-left: 8px solid var(--primary-blue);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-top: 0;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--accent-blue);
+            margin-top: 25px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--primary-blue);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #7dd3fc;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            display: block;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-weight: bold;
+            border-left: 4px solid var(--sky-blue);
+        }
+
+        .info-card {
+            background: var(--light-blue);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px dashed var(--primary-blue);
+            margin: 20px 0;
+        }
+
+        .link-button {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 10px 0;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .link-button:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        strong {
+            color: var(--dark-blue);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .grid { grid-template-columns: 1fr; }
+            section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <header>
+        <h1>Data Science and<br>Machine Learning</h1>
+        <p>Day 4</p>
+        <a href="#content" class="link-button" style="margin-top: 30px;">Start Learning ↓</a>
+    </header>
+
+    <div class="container" id="content">
+        
+        <!-- Topics -->
+        <section>
+            <h2>Topics for Day 4</h2>
+            <ul>
+                <li>Core DataStructures</li>
+                <li>Lists</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>What Are Data Structures</h2>
+             <ul>
+                <li>Methods to store and organize data</li>
+                <li>Enable efficient access and modification</li>
+                <li>Python provides built-in, optimized data structures</li>
+                <li>Essential for real-world programming</li>
+            </ul>
+              
+        </section>
+
+        <section>
+            <h2>List</h2>
+            <div class="info-card">
+                <ul>
+                <li>Ordered and mutable collection</li>
+                <li>Allows duplicate values</li>
+                <li>Stores mixed data types</li>
+            </ul>
+            <code class="code-block">numbers = [1, 2, 3]<br> print(numbers) </code>
+             <code class="code-block">Output: <br> [1,2,3]</code>
+            <code class="code-block">numbers.append(4) <br> print(numbers)</code>
+            <code class="code-block">Output: <br> [1,2,3,4]</code>
+        </section>
+  <section>
+            <h2>List</h2>
+            <div class="info-card">
+                <ul>
+                <li>Ordered and immutable collection</li>
+                <li>Faster than lists</li>
+                <li>Data cannot be changed</li>
+            </ul>
+            <code class="code-block">point = (10, 20)<br> print(point) </code>
+             <code class="code-block">Output: <br> (10, 20)</code>
+        </section>
+        <section>
+             <h2>Set</h2>
+            <div class="info-card">
+                <ul>
+                <li>UOrdered collection</li>
+                <li>No duplicate values</li>
+                <li>Supports set operations</li>
+            </ul>
+            <code class="code-block">unique = {1, 2, 3}<br> print(unique) </code>
+             <code class="code-block">Output: <br> {1, 2, 3}</code>
+        </section>
+
+        <section>
+              <h2>Python Dictionary</h2>
+            <div class="info-card">
+                <ul>
+                <li>Stores key-value pairs</li>
+                <li>Keys must be unique</li>
+                <li>Fast lookup</li>
+            </ul>
+            <code class="code-block">student = {'name': 'Ram', 'age': 20}<br> print(unique.items()) </code>
+             <code class="code-block">Output: <br> {1, 2, 3}</code>
+        </section>
+    </div>
+
+    <footer style="text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem;">
+        &copy; Data Science and Machine Learning Course - Day 2
+    </footer>
+
+</body>
+</html>
+```
