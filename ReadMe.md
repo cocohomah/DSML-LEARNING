@@ -26,3 +26,5 @@ Day 07: Python (User Defined Function )
 day 08: Python Function (BuiltIn Function)
 
 Day 09 : Python Function (Docstring, **args & **kwargs)
+
+Day 12 : Lambda Function
