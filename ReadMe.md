@@ -9,22 +9,22 @@ Day -2-: Introduction , Python virtual environment
 
 Day -3-: Git Repository Setup with SSH Key Integration
 
-Day 01:Python Number , String
+Day 001:Python Number , String
 
-Day 02: Python core data structure, Advanced Lists 
+Day 002: Python core data structure, Advanced Lists 
 
-Day 03:Python  Tuples, Sets
+Day 003:Python  Tuples, Sets
 
-Day 04: Python Dictionaries
+Day 004: Python Dictionaries
 
-Day 05: Condition statement (if else)
+Day 005: Condition statement (if else)
 
-Day 06: Python loop (while , for loop)
+Day 006: Python loop (while , for loop)
 
-Day 07: Python (User Defined Function )
+Day 007: Python (User Defined Function )
 
-day 08: Python Function (BuiltIn Function)
+day 008: Python Function (BuiltIn Function)
 
-Day 09 : Python Function (Docstring, **args & **kwargs)
+Day 009 : Python Function (Docstring, **args & **kwargs)
 
-Day 10 : Lambda Function
+Day 010 : Lambda Function
