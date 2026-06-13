@@ -3,11 +3,11 @@
 
 
 
-Day -1-: Orientation , CV, Linkedin session 
+Day ---: Orientation , CV, Linkedin session 
 
-Day -2-: Introduction , Python virtual environment
+Day -1-: Introduction , Python virtual environment
 
-Day -3-: Git Repository Setup with SSH Key Integration
+Day -2-: Git Repository Setup with SSH Key Integration
 
 Day 001:Python Number , String
 
