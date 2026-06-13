@@ -1,0 +1,697 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science and Machine Learning - Day 2</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4a90e2;
+            --dark-blue: #2563eb;
+            --light-blue: #e0f2fe;
+            --accent-blue: #1e3a8a;
+            --sky-blue: #0ea5e9;
+            --accent-color: #1e293b;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-blue);
+            color: var(--accent-color);
+            line-height: 1.6;
+        }
+
+        /* Background Decorative Elements */
+        .bg-blob {
+            position: fixed;
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0.5;
+            border-radius: 50%;
+        }
+        .blob-1 { width: 400px; height: 400px; background: var(--primary-blue); top: -100px; left: -100px; }
+        .blob-2 { width: 300px; height: 300px; background: var(--sky-blue); bottom: -50px; right: -50px; }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-blue) 100%);
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            color: var(--accent-blue);
+        }
+
+        header p {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--dark-blue);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow);
+            border-left: 8px solid var(--primary-blue);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-top: 0;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--accent-blue);
+            margin-top: 25px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--primary-blue);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #7dd3fc;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            display: block;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-weight: bold;
+            border-left: 4px solid var(--sky-blue);
+        }
+
+        .info-card {
+            background: var(--light-blue);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px dashed var(--primary-blue);
+            margin: 20px 0;
+        }
+        .info-card1 {
+            background: var(--light-blue);
+            border-radius: 15px;
+            border:  dashed var(--primary-blue);
+            
+        }
+
+
+        .link-button {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 10px 0;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .link-button:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        strong {
+            color: var(--dark-blue);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .grid { grid-template-columns: 1fr; }
+            section { padding: 20px; }
+        }
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+table th, table td {
+  border: 1px solid #d1d5db; /* soft gray border */
+  padding: 10px 14px;
+  text-align: left;
+}
+
+table th {
+  background-color: #f3f4f6; /* light gray header */
+  color: #1e3a8a; /* accent blue */
+  font-weight: 600;
+}
+
+table tr:nth-child(even) {
+  background-color: #f9fafb; /* subtle zebra striping */
+}
+
+table tr:hover {
+  background-color: #e0f2fe; /* light blue hover effect */
+  transition: background-color 0.3s ease;
+}
+
+table a {
+  color: #2563eb; /* blue links */
+  text-decoration: none;
+  font-weight: 500;
+}
+
+table a:hover {
+  text-decoration: underline;
+  color: #1e40af; /* darker blue on hover */
+}
+
+.tree1 {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow);
+            border-left: 8px solid var(--primary-blue);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tree {
+  background: #ffffff;
+  border: 2px solid #0077b6;
+  border-radius: 12px;
+  padding: 20px 30px;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+}
+
+.tree ul {
+	padding-top: 20px; 
+	position: relative;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+.tree li {
+	float: left; text-align: center;
+	list-style-type: none;
+	position: relative;
+	padding: 20px 5px 0 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+
+.tree li::before, .tree li::after{
+	content: '';
+	position: absolute; top: 0; right: 50%;
+	border-top: 1px solid #ccc;
+	width: 50%; height: 20px;
+}
+.tree li::after{
+	right: auto; left: 50%;
+	border-left: 1px solid #ccc;
+}
+
+
+.tree li:only-child::after, .tree li:only-child::before {
+	display: none;
+}
+
+.tree li:only-child{ padding-top: 0;}
+
+
+.tree li:first-child::before, .tree li:last-child::after{
+	border: 0 none;
+}
+
+.tree li:last-child::before{
+	border-right: 1px solid #ccc;
+	border-radius: 0 5px 0 0;
+	-webkit-border-radius: 0 5px 0 0;
+	-moz-border-radius: 0 5px 0 0;
+}
+.tree li:first-child::after{
+	border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	-moz-border-radius: 5px 0 0 0;
+}
+
+.tree ul ul::before{
+	content: '';
+	position: absolute; top: 0; left: 50%;
+	border-left: 1px solid #ccc;
+	width: 0; height: 20px;
+}
+
+.tree li a{
+	border: 1px solid #ccc;
+	padding: 5px 10px;
+	text-decoration: none;
+	color: #666;
+	font-family: arial, verdana, tahoma;
+	font-size: 11px;
+	display: inline-block;
+	
+	border-radius: 5px;
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+
+
+.tree li a:hover, .tree li a:hover+ul li a {
+	background: #c8e4f8; color: #000; border: 1px solid #94a0b4;
+}
+
+.tree li a:hover+ul li::after, 
+.tree li a:hover+ul li::before, 
+.tree li a:hover+ul::before, 
+.tree li a:hover+ul ul::before{
+	border-color:  #94a0b4;
+}
+
+
+    </style>
+</head>
+<body>
+
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <header>
+        <h1>Data Science and<br>Machine Learning</h1>
+        <p>Day 3</p>
+        <a href="#content" class="link-button" style="margin-top: 30px;">Start Learning ↓</a>
+    </header>
+
+    <div class="container" id="content">
+        
+        <!-- Topics -->
+        <section>
+            <h2>Topics for Day 3</h2>
+            <ul><b>Data type</b>
+                <li>Integer</li>
+                <li>Strings</li>
+            </ul>
+        </section>
+      <div class="tree1">
+                   <div class="tree">
+                    <ul>
+                        <li>
+                            <a href="#">Python Data Types</a>
+                            <ul>
+                                <li>
+                                    <a href="#">Numeric</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#">Integer</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Float</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Complex</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="#">Dictionary</a>
+
+                                </li>
+                                <li>
+                                    <a href="#">Boolean</a>
+                                </li>
+                                <li>
+                                    <a href="#">Set</a>
+                                </li>
+                                <li>
+                                    <a href="#">Sequence Type</a>
+                                    <ul>
+                                        <li>
+                                            <a href="#">String</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">List</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Tuple</a>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+      </div>
+
+          <br><br><br><br><br><br>
+
+        <section>
+            <h2>Python Numbers</h2>
+            <br>
+            <ul>
+                <li>
+                    Numbers are used to store numeric values
+                </li>
+                 <li>
+                    Python supports multiple numeric types
+                </li>
+                 <li>
+                    Used in calculations, logic, and data processing
+                </li>
+            </ul>
+
+            
+        </section>
+
+
+        <section>
+            <h2>Python Numerical Types</h2>
+            <h3>Integers:</h3>
+            <div class="info-card">
+                <p><strong>Integers</strong> are whole numbers, either positive or negative. In Python, integers
+                have no size limit, so you can use them to represent very large or very small
+                    numbers.</p>
+            </div>
+             <h4>Examples:</h4>
+            <code class="code-block">number = -1234454677</code>
+            <code class="code-block">type(number)</code>
+         </section>
+
+           <section>
+            <h3>Floating-point Numbers:</h3>
+            <div class="info-card">
+                <p><strong>Floating-point numbers</strong> are decimal numbers, either positive or
+negative. In Python, floating-point numbers are represented using
+the float type.</p>
+            </div>
+             <h4>Examples:</h4>
+            <code class="code-block">pie = 22/7</code>
+            <code class="code-block">print(pie)
+            </code><code class="code-block">type(pie)</code>
+         </section>
+
+
+          <section>
+            
+            <h3> Complex numbers:</h3>
+            <div class="info-card">
+                <p><strong>Complex Numbers</strong>  are numbers with a real part and an imaginary
+part. In Python, complex numbers are represented using the
+complex type.</p>
+            </div>
+             <h4>Examples:</h4>
+            <code class="code-block">vec = 6 - 3j</code>
+            <code class="code-block">type(vec)</code>
+         </section>
+
+         <section>
+            <h2>
+                Arthemetic Operators
+            </h2>
+            <ul>
+                <li>
+                  '+' Addition
+                </li>
+                  <li>
+                  '-' Subtraction
+                </li>
+                  <li>
+                  '*' Multiplication
+                </li>
+                  <li>
+                  '/' Division
+                </li>
+                  <li>
+                  '%' Modulus:
+                  <br>
+                  <div class="info-card1">
+                    <h5>
+                <p><strong>'%'</strong> Returns the remainder of dividing the left operand by the right operand</p>
+                 </h5></div>  
+                </li>
+                 
+                <li>
+                  '**' Exponentiation
+                </li>
+                  <li>
+                  '//' Floor Division
+                  <br>
+                   <div class="info-card1">
+                <h5><p> <strong>'//'</strong> Divides the left operand by the right operand and returns the largest
+integer less than or equal to the result</p></h5>
+            </div>
+                </li>
+               
+            </ul>
+         </section>
+
+         <section>
+            <h2>Type Conversion</h2>
+            <div class="info-card">
+                <p>
+                    You can convert numbers from one type to another in
+Python, using functions like:
+                </p>
+            </div>
+            <code class="code-block">int()</code>
+            <code class="code-block">float()</code>
+            <code class="code-block">complex()</code>
+         </section>
+
+         <section>
+            <h2>
+                Comparison Operators
+            </h2>
+            <ul>
+                <li>
+                  '==' Equal To
+                </li>
+                  <li>
+                  '!=' Equal To
+                </li>
+                  <li>
+                  '>' Greater Than
+                </li>
+                  <li>
+                  '&lt' Less Than
+                </li>
+                  <li>
+                  '>=' Greater Than or Equal To
+                </li>
+                 
+                <li>
+                  '&lt=' Less Than or Equal To
+                </li>
+                           
+            </ul>
+         </section>
+
+
+
+         <section>
+    <h2>Math Functions</h2>
+    <p>Python provides a variety of math functions for complex operations:</p>
+    <ul>
+        <li>abs(), round(), min(), max(), pow(), sqrt(), log()</li>
+    </ul>
+    <div class="code-block">
+        import math<br>
+        math.floor(4.8) #4<br>
+        math.ceil(4.8) #5<br>
+        math.gcd(24, 36) # greatest common divisor<br>
+        math.log2(64) #6<br>
+        urea = 640<br>
+        capacity = 800<br>
+        result = min(urea, capacity)
+    </div>
+</section>
+
+<section>
+    <h2>Strings</h2>
+    <p>A string is a sequence of characters:</p>
+    <ul>
+        <li>Used to store text type data</li>
+        <li>Defined using single or double quotes</li>
+    </ul>
+    <p>
+        <strong> 
+            Example:
+        </strong>
+    </p>
+    <img src="https://th.bing.com/th/id/R.c42946c6dee6ddad31debaa3f62b39a3?rik=cOJZDx8MYa9B6w&pid=ImgRaw&r=0" alt="Indexing">
+</section>
+
+<section>
+    <h2>Creating Strings</h2>
+    <ul>
+        <li>Single quotes: <code class="code-block">'Hello'</code></li>
+        <li>Double quotes: <code class="code-block">"Python"</code></li>
+        <li>Triple Quotes(For Multiline): <code class="code-block">"""This is a <br>multiline <br>string in Python."""</code>
+</li>
+    </ul>
+    <div class="code-block">
+        text1 = "It's a sunny day"<br>
+        text2 = 'He said "Hello"'<br>
+        print(text1)<br>
+        print(text2)
+    </div>
+</section>
+
+<section>
+    <h2>String Operations</h2>
+    <ul>
+        <li>Concatenation (+)</li>
+        <li>Repetition (*)</li>
+        <li>Indexing and slicing</li>
+        <li>Length using len()</li>
+    </ul>
+</section>
+
+<section>
+    <h2>String Methods</h2>
+    <ul>
+        <li>upper()</li>
+        <li>lower(), </li>
+         <li>title()</li>
+        <li>strip()
+        <li> join()</li>
+        <li>replace() </li>
+        <li>split(),</li>
+    </ul>
+</section>
+
+<section>
+    <h2>Numbers vs Strings</h2>
+    <ul>
+        <li>Numbers are used for calculations</li>
+        <li>Strings are used for text</li>
+        <li>Type matters: '10' is not the same as 10</li>
+    </ul>
+</section>
+
+<section>
+    <h2>String Methods</h2>
+    <table class = "method">
+  <tbody>
+    <tr>
+      <th>Method</th>
+      <th>Description</th>
+    </tr>
+    <tr><td><a href="#">capitalize()</a></td><td>Converts the first character to upper case</td></tr>
+    <tr><td><a href="#">casefold()</a></td><td>Converts string into lower case</td></tr>
+    <tr><td><a href="#">center()</a></td><td>Returns a centered string</td></tr>
+    <tr><td><a href="#">count()</a></td><td>Returns the number of times a specified value occurs in a string</td></tr>
+    <tr><td><a href="#">encode()</a></td><td>Returns an encoded version of the string</td></tr>
+    <tr><td><a href="#">endswith()</a></td><td>Returns true if the string ends with the specified value</td></tr>
+    <tr><td><a href="#">expandtabs()</a></td><td>Sets the tab size of the string</td></tr>
+    <tr><td><a href="#">find()</a></td><td>Searches the string for a specified value and returns the position of where it was found</td></tr>
+    <tr><td><a href="#">format()</a></td><td>Formats specified values in a string</td></tr>
+    <tr><td><a href="#">format_map()</a></td><td>Formats specified values from a dictionary in a string</td></tr>
+    <tr><td><a href="#">index()</a></td><td>Searches the string for a specified value and returns the position of where it was found</td></tr>
+    <tr><td><a href="#">isalnum()</a></td><td>Returns True if all characters in the string are alphanumeric</td></tr>
+    <tr><td><a href="#">isalpha()</a></td><td>Returns True if all characters in the string are in the alphabet</td></tr>
+    <tr><td><a href="#">isascii()</a></td><td>Returns True if all characters in the string are ascii characters</td></tr>
+    <tr><td><a href="#">isdecimal()</a></td><td>Returns True if all characters in the string are decimals</td></tr>
+    <tr><td><a href="#">isdigit()</a></td><td>Returns True if all characters in the string are digits</td></tr>
+    <tr><td><a href="#">isidentifier()</a></td><td>Returns True if the string is an identifier</td></tr>
+    <tr><td><a href="#">islower()</a></td><td>Returns True if all characters in the string are lower case</td></tr>
+    <tr><td><a href="#">isnumeric()</a></td><td>Returns True if all characters in the string are numeric</td></tr>
+    <tr><td><a href="#">isprintable()</a></td><td>Returns True if all characters in the string are printable</td></tr>
+    <tr><td><a href="#">isspace()</a></td><td>Returns True if all characters in the string are whitespaces</td></tr>
+    <tr><td><a href="#">istitle()</a></td><td>Returns True if the string follows the rules of a title</td></tr>
+    <tr><td><a href="#">isupper()</a></td><td>Returns True if all characters in the string are upper case</td></tr>
+    <tr><td><a href="#">join()</a></td><td>Converts the elements of an iterable into a string</td></tr>
+    <tr><td><a href="#">ljust()</a></td><td>Returns a left justified version of the string</td></tr>
+    <tr><td><a href="#">lower()</a></td><td>Converts a string into lower case</td></tr>
+    <tr><td><a href="#">lstrip()</a></td><td>Returns a left trim version of the string</td></tr>
+    <tr><td><a href="#">maketrans()</a></td><td>Returns a translation table to be used in translations</td></tr>
+    <tr><td><a href="#">partition()</a></td><td>Returns a tuple where the string is parted into three parts</td></tr>
+    <tr><td><a href="#">replace()</a></td><td>Returns a string where a specified value is replaced with a specified value</td></tr>
+    <tr><td><a href="#">rfind()</a></td><td>Searches the string for a specified value and returns the last position of where it was found</td></tr>
+    <tr><td><a href="#">rindex()</a></td><td>Searches the string for a specified value and returns the last position of where it was found</td></tr>
+    <tr><td><a href="#">rjust()</a></td><td>Returns a right justified version of the string</td></tr>
+    <tr><td><a href="#">rpartition()</a></td><td>Returns a tuple where the string is parted into three parts</td></tr>
+    <tr><td><a href="#">rsplit()</a></td><td>Splits the string at the specified separator, and returns a list</td></tr>
+    <tr><td><a href="#">rstrip()</a></td><td>Returns a right trim version of the string</td></tr>
+    <tr><td><a href="#">split()</a></td><td>Splits the string at the specified separator, and returns a list</td></tr>
+    <tr><td><a href="#">splitlines()</a></td><td>Splits the string at line breaks and returns a list</td></tr>
+    <tr><td><a href="#">startswith()</a></td><td>Returns true if the string starts with the specified value</td></tr>
+    <tr><td><a href="#">strip()</a></td><td>Returns a trimmed version of the string</td></tr>
+    <tr><td><a href="#">swapcase()</a></td><td>Swaps cases, lower case becomes upper case and vice versa</td></tr>
+    <tr><td><a href="#">title()</a></td><td>Converts the first character of each word to upper case</td></tr>
+    <tr><td><a href="#">translate()</a></td><td>Returns a translated string</td></tr>
+    <tr><td><a href="#">upper()</a></td><td>Converts a string into upper case</td></tr>
+    <tr><td><a href="#">zfill()</a></td><td>Fills the string with a specified number of 0 values at the beginning</td></tr>
+  </tbody>
+</table>
+
+</section>
+
+
+    <footer style="text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem;">
+        &copy; Data Science and Machine Learning Course - Day 2
+    </footer>
+
+</body>
+</html>
+```
