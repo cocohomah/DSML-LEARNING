@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Science and Machine Learning - Day 1</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #4a90e2;
+            --dark-blue: #2563eb;
+            --light-blue: #e0f2fe;
+            --accent-blue: #1e3a8a;
+            --sky-blue: #0ea5e9;
+            --accent-color: #1e293b;
+            --white: #ffffff;
+            --shadow: 0 10px 30px rgba(37, 99, 235, 0.15);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-blue);
+            color: var(--accent-color);
+            line-height: 1.6;
+        }
+
+        /* Background Decorative Elements */
+        .bg-blob {
+            position: fixed;
+            z-index: -1;
+            filter: blur(60px);
+            opacity: 0.5;
+            border-radius: 50%;
+        }
+        .blob-1 { width: 400px; height: 400px; background: var(--primary-blue); top: -100px; left: -100px; }
+        .blob-2 { width: 300px; height: 300px; background: var(--sky-blue); bottom: -50px; right: -50px; }
+
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--white) 0%, var(--light-blue) 100%);
+            padding: 20px;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+            letter-spacing: -1px;
+            color: var(--accent-blue);
+        }
+
+        header p {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: var(--dark-blue);
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        section {
+            background: var(--white);
+            border-radius: 24px;
+            padding: 40px;
+            margin-bottom: 60px;
+            box-shadow: var(--shadow);
+            border-left: 8px solid var(--primary-blue);
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--dark-blue);
+            margin-top: 0;
+            border-bottom: 2px solid var(--light-blue);
+            padding-bottom: 10px;
+        }
+
+        h3 {
+            color: var(--accent-blue);
+            margin-top: 25px;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        ul li::before {
+            content: "•";
+            color: var(--primary-blue);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .code-block {
+            background: #1e293b;
+            color: #7dd3fc;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-family: 'Courier New', Courier, monospace;
+            display: block;
+            margin: 10px 0;
+            overflow-x: auto;
+            font-weight: bold;
+            border-left: 4px solid var(--sky-blue);
+        }
+
+        .link-button {
+            display: inline-block;
+            background: var(--primary-blue);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin: 10px 0;
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+
+        .link-button:hover {
+            background: var(--dark-blue);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4);
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        strong {
+            color: var(--dark-blue);
+        }
+
+        code {
+            background: var(--light-blue);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--accent-blue);
+            font-size: 0.9em;
+        }
+
+        small {
+            color: var(--sky-blue);
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 2.2rem; }
+            .grid { grid-template-columns: 1fr; }
+            section { padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blob blob-1"></div>
+    <div class="bg-blob blob-2"></div>
+
+    <header>
+        <h1>Data Science and<br>Machine Learning</h1>
+        <p>Day 1</p>
+        <a href="#content" class="link-button" style="margin-top: 30px;">Start Learning ↓</a>
+    </header>
+
+    <div class="container" id="content">
+        
+        <!-- Slide 2: Topics -->
+        <section>
+            <h2>Topics for Day 1</h2>
+            <ul>
+                <li>Installing Python</li>
+                <li>Installing IDE and JupyterLab</li>
+                <li>Installing Git</li>
+            </ul>
+        </section>
+
+        <!-- Slide 3: Learning Outcomes -->
+        <section>
+            <h2>Learning Outcomes</h2>
+            <div class="grid">
+                <ul>
+                    <li><strong>Language:</strong> Python</li>
+                    <li><strong>Version Control:</strong> Git</li>
+                    <li><strong>Terminal:</strong> Linux or Bash Commands</li>
+                </ul>
+                <ul>
+                    <li><strong>Database:</strong> Core concepts</li>
+                    <li><strong>Mathematics:</strong> Foundations for ML</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Slide 4: Programming Skills -->
+        <section>
+            <h2>Programming Skills (Python)</h2>
+            <h3>Core Basics</h3>
+            <ul>
+                <li>Data Structures</li>
+                <li>Loops</li>
+                <li>Functions</li>
+                <li>OOP Basics</li>
+            </ul>
+            <h3>Working with Libraries</h3>
+            <ul>
+                <li><strong>NumPy:</strong> Arrays and math operations</li>
+                <li><strong>Pandas:</strong> DataFrames and cleaning</li>
+                <li><strong>Matplotlib/Seaborn:</strong> Beautiful visualizations (Line, Bar, Scatter)</li>
+            </ul>
+        </section>
+
+        <!-- Slide 5 & 6: Installation -->
+        <section>
+            <h2>Getting Started: Installation</h2>
+            
+            <h3>1. Python</h3>
+            <p>Visit the official website to download Python, Pip (included), and your chosen editor.</p>
+            <a href="https://www.python.org/downloads/" target="_blank" class="link-button">Download Python</a>
+            <p><small>💡 Remember to check <strong>"Add Python to PATH"</strong> during installation.</small></p>
+
+            <h3>2. Visual Studio Code (IDE)</h3>
+            <p>The open source AI code editor.</p>
+            <a href="https://code.visualstudio.com/" target="_blank" class="link-button">Download VS Code</a>
+        </section>
+
+        <!-- Slide 7: Verification -->
+        <section>
+            <h2>Verify Installation</h2>
+            <div class="grid">
+                <div>
+                    <h3>Windows</h3>
+                    <p>Open Command Prompt and type:</p>
+                    <code class="code-block">python --version</code>
+                    <code class="code-block">pip --version</code>
+                </div>
+                <div>
+                    <h3>Mac/Linux</h3>
+                    <p>Open Terminal and type:</p>
+                    <code class="code-block">python3 --version</code>
+                </div>
+            </div>
+            <div style="margin-top: 30px;">
+                <h3>First Program Test</h3>
+                <p>Create <code>hello.py</code> and add:</p>
+                <code class="code-block">print("Hello, Python!")</code>
+                <p>Run it using:</p>
+                <code class="code-block">python hello.py</code>
+            </div>
+        </section>
+
+        <!-- Slide 8: Jupyter -->
+        <section>
+            <h2>Jupyter Notebook & JupyterLab</h2>
+            <p>Install via terminal:</p>
+            <code class="code-block">pip install notebook</code> 
+            <p>OR</p>
+            <code class="code-block">pip install jupyterlab</code>
+            
+            <h3>How to Start</h3>
+            <ul>
+                <li><strong>Notebook:</strong> <code class="code-block">jupyter notebook</code></li>
+                <li><strong>Lab:</strong> <code class="code-block">jupyter lab</code></li>
+            </ul>
+            <p>Alternatively, use <strong>Google Colab</strong> (No installation required):</p>
+            <a href="https://colab.research.google.com/" target="_blank" class="link-button">Open Google Colab</a>
+        </section>
+
+        <!-- Slide 9: Virtual Environments -->
+        <section>
+            <h2>Create a Virtual Environment</h2>
+            <p>Go to your project folder in Terminal/CMD:</p>
+            <code class="code-block">python -m venv venv</code>
+            
+            <h3>Activate the Environment</h3>
+            <p><strong>Windows:</strong></p>
+            <code class="code-block">venv\Scripts\activate</code>
+            <p><strong>Mac / Linux:</strong></p>
+            <code class="code-block">source venv/bin/activate</code>
+            
+            <h3>Deactivate</h3>
+            <code class="code-block">deactivate</code>
+        </section>
+
+        <!-- Slide 10 & 11: Git -->
+        <section>
+            <h2>Git/GitHub for Version Control</h2>
+            <p><em>Git is a distributed version control system that keeps a history of all changes and enables collaboration.</em></p>
+            
+            <h3>Core Concepts</h3>
+            <ul>
+                <li><strong>Repository (Repo):</strong> Project storage with full history.</li>
+                <li><strong>Commit:</strong> A snapshot of changes.</li>
+                <li><strong>Branch:</strong> A parallel line of development.</li>
+                <li><strong>Push/Pull:</strong> Uploading and downloading changes.</li>
+            </ul>
+
+            <h3>Essential Commands</h3>
+            <ul>
+                <li><code>git init</code> — Create a new repository</li>
+                <li><code>git clone [url]</code> — Copy an existing repository</li>
+                <li><code>git add .</code> — Stage all changes for commit</li>
+                <li><code>git commit -m "message"</code> — Save a snapshot</li>
+                <li><code>git push</code> — Upload local changes to remote</li>
+                <li><code>git merge</code> — Combining changes from branches</li>
+                <li><code>git clone</code> —  Downloading a copy of a repo</li>
+                <li><code>git pull</code> — Get latest updates from remote</li>
+            </ul>
+
+            <div style="text-align: center; margin-top: 30px;">
+                <h3>Practice your skills:</h3>
+                <a href="https://learngitbranching.js.org/" target="_blank" class="link-button">Git Playground</a>
+            </div>
+        </section>
+
+    </div>
+
+    <footer style="text-align: center; padding: 40px; color: #64748b; font-size: 0.9rem;">
+        &copy; Data Science and Machine Learning Course - Day 1
+    </footer>
+
+</body>
+</html>
+
