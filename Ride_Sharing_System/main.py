@@ -12,7 +12,7 @@ def book_ride(vehicle):
 
 def save_ride(driver, vtype, distance, fare):
     try:
-        f = open("DSML-LEARNING/Ride_Sharing_System/ride_history.txt", "a")
+        f = open("/home/coder/Documents/DSML-LEARNING/Ride_Sharing_System/ride_history.txt", "a")
         f.write("Driver: " + driver + "\n")
         f.write("Vehicle: " + vtype + "\n")
         f.write("Distance: " + str(distance) + " km\n")
