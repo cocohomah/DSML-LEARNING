@@ -1,0 +1,10 @@
+Driver: anmol
+Vehicle: car
+Distance: 5.0 km
+Fare: Rs. 50.0
+-----------------------------
+Driver: anish
+Vehicle: bike
+Distance: 5.0 km
+Fare: Rs. 25.0
+-----------------------------
