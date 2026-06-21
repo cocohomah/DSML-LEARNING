@@ -74,8 +74,7 @@ except RideFileError as e:
     print("File Error:", e)
 except ValueError as e:
     print("Value Error:", e)
-except Exception as e:
-    print("Something went wrong:", e)
+
 
 
 
