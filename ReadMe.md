@@ -28,3 +28,5 @@ day 008: Python Function (BuiltIn Function)
 Day 009 : Python Function (Docstring, **args & **kwargs)
 
 Day 010 : Lambda Function
+
+Day 011 : Recursion Function, Nested Function, Scope and LEGB Rule, Decorators, Iterators and Generators
