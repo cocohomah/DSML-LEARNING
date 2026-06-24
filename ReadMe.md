@@ -29,4 +29,6 @@ Day 009 : Python Function (Docstring, **args & **kwargs)
 
 Day 010 : Lambda Function
 
+Day -3- : Revision
+
 Day 011 : Recursion Function, Nested Function, Scope and LEGB Rule, Decorators, Iterators and Generators
