@@ -32,3 +32,7 @@ Day 010 : Lambda Function
 Day -3- : Revision
 
 Day 011 : Recursion Function, Nested Function, Scope and LEGB Rule, Decorators, Iterators and Generators
+
+Day 012 : Errors and Exception Handling
+
+Day 013 : Introduction To OOP -> CLASS, OBJECT, CONSTRUCTOR (__INIT__), SELF PARAMETER
