@@ -3,7 +3,7 @@ import json
 
 
 window = Tk()
-window.geometry("500x700")
+window.geometry("800x700")
 window.title("Courier Management System ")
 window.config(background = "#333333" )
 

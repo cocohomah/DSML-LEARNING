@@ -1,0 +1,16 @@
+{
+    "12345" :{
+        
+        
+            "name": "John Doe",
+            "street": "123 Main St",
+            "city": "Anytown",
+            "zip_code": "12345",
+            "phone": "555-1234",
+            "email": "idk@gmail.com",
+            "status": "Not_delivered",
+            "time": "Evening",
+            "contact_method": "Email"
+        
+    }
+}
