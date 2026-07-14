@@ -44,7 +44,7 @@ def login_tab():
 
 
     def login_check():
-        with open("/home/coder/Documents/DSML-LEARNING/Project_1/user_data.json", "r") as f:
+        with open("/home/coder/Documents/DSML-LEARNING/Project_1/user_login_data.json", "r") as f:
             data = json.load(f)
 
 
@@ -95,14 +95,14 @@ def signup_tab():
     password = Entry(frame1, show="*", font=("Arial", 16))
 
     def signup_action():
-        with open("/home/coder/Documents/DSML-LEARNING/Project_1/user_data.json", "r") as f:
+        with open("/home/coder/Documents/DSML-LEARNING/Project_1/user_login_data.json", "r") as f:
             data = json.load(f)
 
         if username.get() in data:
             Label(frame1, text="*Email already exists*", bg="#333333", fg="red").grid(row=6, column=0, columnspan=2)
         else:
             data[username.get()] = [phone.get(), password.get()]
-            with open("/home/coder/Documents/DSML-LEARNING/Project_1/user_data.json", "w") as f:
+            with open("/home/coder/Documents/DSML-LEARNING/Project_1/user_login_data.json", "w") as f:
                 json.dump(data, f, indent=4)
             Label(frame1, text="*Signup Successful*", bg="#333333", fg="green").grid(row=7, column=0, columnspan=2)
 
@@ -144,7 +144,7 @@ def forgot_tab():
     new_pwd = Entry(frame2, show="*", font=("Arial", 16))
 
     def reset_password():
-        with open("/home/coder/Documents/DSML-LEARNING/Project_1/user_data.json", "r") as f:
+        with open("/home/coder/Documents/DSML-LEARNING/Project_1/user_login_data.json", "r") as f:
          data = json.load(f)
         if username.get() not in data:
             Label(frame2, text="*Email not found*", bg="#333333", fg="red").grid(row=6, column=0, columnspan=2)
@@ -152,7 +152,7 @@ def forgot_tab():
             Label(frame2, text="*Phone number mismatch*", bg="#333333", fg="red").grid(row=7, column=0, columnspan=2)
         else:
             data[username.get()][1] = new_pwd.get()
-            with open("/home/coder/Documents/DSML-LEARNING/Project_1/user_data.json", "w") as f:
+            with open("/home/coder/Documents/DSML-LEARNING/Project_1/user_login_data.json", "w") as f:
                 json.dump(data, f, indent=4)
             Label(frame2, text="*Password Updated*", bg="#333333", fg="green").grid(row=9, column=0, columnspan=2)
 
