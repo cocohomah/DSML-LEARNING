@@ -13,7 +13,7 @@ with open('/home/coder/Documents/DSML-LEARNING/Project_1/user_delivery_data.json
 def get_customer_id():
     window = Tk()
     window.geometry("500x700")
-    window.title("Delivery Details")
+    window.title("NSM_Courriers")
     window.config(background="#333333")
 
     ask = Label(window, text="Enter Customer ID", bg='#333333', fg="#FF3399", font=("Arial", 20, 'bold'))
@@ -55,10 +55,10 @@ class Existing_Customer:
     def display_details(self):
         window = Tk()
         window.geometry("500x700")
-        window.title("Delivery Details")
+        window.title("NSM_Courriers")
         window.config(background="#333333")
 
-        title = Label(window, text="Delivery Details", bg='#333333', fg="#FF3399", font=("Arial", 30, 'bold'))
+        title = Label(window, text="NSM_Courriers", bg='#333333', fg="#FF3399", font=("Arial", 30, 'bold'))
         title.pack(pady=20)
 
         details = json.dumps(data[self.id], indent=4)
@@ -73,7 +73,7 @@ class Existing_Customer:
     def add_extra_details(self):
         window = Tk()
         window.geometry("500x700")
-        window.title("Delivery Details")
+        window.title("NSM_Courriers")
         window.config(background="#333333")
 
         ask = Label(window, text="Enter extra data", bg='#333333', fg="#FF3399", font=("Arial", 20, 'bold'))
@@ -102,7 +102,7 @@ class Existing_Customer:
     def update_info(self):
         window = Tk()
         window.geometry("700x700")
-        window.title("Update Status")
+        window.title("NSM_Courriers")
         window.config(background="#333333")
 
         ask = Label(window, text="What do you want to update?", bg='#333333', fg="#FF3399", font=("Arial", 20, 'bold'))
@@ -148,7 +148,7 @@ if customer_id is not None:
     def customer_menu(c1=c1):
         window = Tk()
         window.geometry("500x700")
-        window.title("Delivery Details")
+        window.title("NSM_Courriers")
         window.config(background="#333333")
 
         ask = Label(window, text="What do you want to do?", bg='#333333', fg="#FF3399", font=("Arial", 20, 'bold'))
