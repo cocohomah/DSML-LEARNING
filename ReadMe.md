@@ -36,3 +36,6 @@ Day 011 : Recursion Function, Nested Function, Scope and LEGB Rule, Decorators, 
 Day 012 : Errors and Exception Handling
 
 Day 013 : Introduction To OOP -> CLASS, OBJECT, CONSTRUCTOR (__INIT__), SELF PARAMETER, Types of Attributes, Types of Methods
+
+Day 014 : Class review, Method Overloading, Inheritance, SUPER() function and Method Resolution Order (MRO)
+
