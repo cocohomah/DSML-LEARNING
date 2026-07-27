@@ -1,17 +1,15 @@
 {
     "12345": {
         "name": "Ronaldo",
-        "street": "123 Main St",
-        "city": "Anytown",
-        "zip_code": "12345",
+        "sent_from_address": "Portugal",
+        "deliverd_to_address": "Argentina",
         "phone": "9514521452",
+        "weight": "4 KG",
         "email": "idk@gmail.com",
-        "status": "Not_delivered",
+        "status": "Not Delivered",
         "time": "Evening",
         "contact_method": "Email",
-        "request_by_delivery_agent": {
-            "pending_status": "delivered",
-            "otp": "509278"
-        }
+        "Delivery_agent_email": "who@gmail.com",
+        "Delivery_agent_name": "Hari"
     }
 }

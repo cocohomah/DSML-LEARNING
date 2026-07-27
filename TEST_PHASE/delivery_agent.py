@@ -58,6 +58,76 @@ def tracking_menu_delivery_agent(tracking_id,delivery_agent = delivery_agent):
     button_view = Button(frame,bg="#FF3399", fg="#FFFFFF", text="View Tracking Details", font=("Arial", 12), command=lambda: view_tracking_details_delivery_agent(tracking_id))
     button_view.pack(pady=10)
 
+
+    def change_the_status(tracking_id,delivery_agent = delivery_agent):
+          clear_window()
+          frame = new_frame()
+          
+          label = Label(frame, text="NSM_Courier delivery_agent Panel", font=("Arial", 16,"bold"), fg ="#FF3399", bg="#333333")
+          label.pack(pady=20)
+          
+
+          def create_otp_delivery_agent(tracking_id,delivery_agent = delivery_agent):
+            clear_window()
+            frame = new_frame()
+            label_new_status = Label(frame, text="New Status:", font=("Arial", 12), fg ="#FFFFFF", bg="#333333")
+            label_new_status.pack(pady=10)
+            entry_new_status = Entry(frame, font=("Arial", 12))
+            entry_new_status.pack(pady=5)
+            def generate_otp(tracking_id,requested_status,delivery_agent= delivery_agent):
+                otp = delivery_agent.request_delivery_status_change(tracking_id,requested_status)
+                if otp:
+                    label_success = Label(frame, text="OTP generated", font=("Arial", 12), fg="green", bg="#333333")
+                    label_success.pack(pady=10)
+                else:
+                    label_error = Label(frame, text="Error generating the OTP ", font=("Arial", 12), fg="red", bg="#333333")
+                    label_error.pack(pady=10)
+
+
+            button_generate_otp = Button(frame,bg = "#FF3399", fg = "#FFFFFF", text="Send OTP", font=("Arial",12), command=lambda: generate_otp(tracking_id,entry_new_status.get()))
+            button_generate_otp.pack(pady=10)
+
+            back = Button(frame,bg = "#FF3399", fg = "#FFFFFF", text="Back", font=("Arial",12), command=lambda: change_the_status(tracking_id))
+            back.pack(pady=10)
+
+          button_generate_otp = Button(frame,bg = "#FF3399", fg = "#FFFFFF", text="Generate OTP", font=("Arial",12), command=lambda: create_otp_delivery_agent(tracking_id))
+          button_generate_otp.pack(pady=10)
+
+          def otp_verify_delivery_agent(tracking_id,delivery_agent = delivery_agent):
+                        clear_window()
+                        frame = new_frame()
+                        label_OTP = Label(frame, text="Enter OTP:", font=("Arial", 12), fg ="#FFFFFF", bg="#333333")
+                        label_OTP.pack(pady=10)
+                        entry_OTP = Entry(frame, font=("Arial", 12))
+                        entry_OTP.pack(pady=5)
+                        def check_otp_delivery_agent(tracking_id,OTP,delivery_agent= delivery_agent):
+                            otp = delivery_agent.check_otp(tracking_id,OTP)
+                            if otp:
+                                label_success = Label(frame, text="Status Changed", font=("Arial", 12), fg="green", bg="#333333")
+                                label_success.pack(pady=10)
+                            else:
+                                label_error = Label(frame, text="OTP was Incorrect", font=("Arial", 12), fg="red", bg="#333333")
+                                label_error.pack(pady=10)
+
+
+                        button_generate_otp = Button(frame,bg = "#FF3399", fg = "#FFFFFF", text="Verify OTP", font=("Arial",12), command=lambda: check_otp_delivery_agent(tracking_id,entry_OTP.get()))
+                        button_generate_otp.pack(pady=10)
+
+                        back = Button(frame,bg = "#FF3399", fg = "#FFFFFF", text="Back", font=("Arial",12), command=lambda: change_the_status(tracking_id))
+                        back.pack(pady=10)
+
+
+
+          button_check_otp = Button(frame,bg = "#FF3399", fg = "#FFFFFF", text="Check OTP", font=("Arial",12), command=lambda: otp_verify_delivery_agent(tracking_id,))
+          button_check_otp.pack(pady=10)
+
+          back = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Back", font=("Arial", 12), command=item_search)
+          back.pack(pady=10)
+
+
+    button_change_the_status = Button(frame,bg = "#FF3399", fg = "#FFFFFF", text="Change the delivery status", font=("Arial",12), command=lambda: change_the_status(tracking_id))
+    button_change_the_status.pack(pady=10)
+
     back = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Back", font=("Arial", 12), command=item_search)
     back.pack(pady=10)
     
@@ -145,11 +215,3 @@ window.mainloop()
 
 
 
-# # Request a status change and generate an OTP
-# otp = delivery_agent.request_delivery_status_change(
-#     "12345",
-#     "Delivered"
-# )
-
-# if otp is not None:
-#     print("Give this OTP to the item:", otp)

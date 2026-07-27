@@ -2,7 +2,7 @@ import json
 import random
 import sys
 import subprocess
-
+import string
 
 class BaseUser:
 
@@ -186,17 +186,6 @@ class Admin(BaseUser):
 
 
 class DeliveryAgent(BaseUser):
-    """
-    DeliveryAgent class.
-
-    Import this class into your Delivery Boy page.
-
-    Delivery Boy features:
-    - Search for customers
-    - View customer details
-    - Request a delivery status change
-    - Generate an OTP for the customer
-    """
 
     def __init__(self, file_path):
         self.file_path = file_path
@@ -209,59 +198,93 @@ class DeliveryAgent(BaseUser):
     # ==============================================================
 
     def request_delivery_status_change(self, tracking_id, requested_status):
-        """
-        Request a delivery status change and generate an OTP.
 
-        This method does not immediately change the customer's
-        actual status.
-
-        It adds these two fields to the customer record:
-
-            "pending_status": "Delivered",
-            "otp": "123456"
-
-        Your future Customer page can ask the customer for the OTP.
-        If the OTP is correct, that page can complete the status change.
-
-        Returns:
-            The generated OTP as a string if successful.
-            None if the customer was not found.
-
-        Example in your Delivery Boy page:
-
-            otp = delivery_agent.request_delivery_status_change(
-                "12345",
-                "Delivered"
-            )
-
-            if otp is not None:
-                print("OTP generated:", otp)
-            else:
-                print("Customer not found.")
-        """
 
         tracking_id = str(tracking_id).strip()
         requested_status = str(requested_status).strip()
 
-        # Read the current database.
+
         with open(self.file_path, "r", encoding="utf-8") as file:
             data = json.load(file)
 
-        # Check that the customer exists.
         if tracking_id not in data:
             return None
 
-        # Generate a random six-digit OTP.
         otp = str(random.randint(100000, 999999))
 
-        # Save the requested status and OTP.
-        # The original status is not changed yet.
-        data[tracking_id]["request"]={}
-        data[tracking_id]["request"]["pending_status"] = requested_status
-        data[tracking_id]["request"]["otp"] = otp
+        data[tracking_id]["request_by_delivery_agent"]={}
+        data[tracking_id]["request_by_delivery_agent"]["pending_status"] = requested_status
+        data[tracking_id]["request_by_delivery_agent"]["otp"] = otp
 
-        # Save the updated database.
-        with open(self.file_path, "w", encoding="utf-8") as file:
+        with open(self.file_path, "w") as file:
             json.dump(data, file, indent=4)
 
-        return otp
+        return True
+    
+    # ==============================================================
+    # DELIVERY BOY METHOD: CHECK THE OTP
+    # ==============================================================
+
+    def check_otp(self,tracking_id, otp):
+        
+        tracking_id = str(tracking_id).strip()
+        otp = str(otp).strip()
+
+
+        with open(self.file_path, "r", encoding="utf-8") as file:
+            data = json.load(file)
+        
+        if  data[tracking_id]["request_by_delivery_agent"]["otp"] == otp:
+            data[tracking_id]["status"] = "Delivered"
+            del data[tracking_id]["request_by_delivery_agent"]
+        else:
+            return None
+        
+
+        with open(self.file_path, "w") as file:
+            json.dump(data, file, indent=4)
+        
+        return True
+
+
+
+
+
+class customer(BaseUser):
+
+    def __init__(self, file_path):
+
+        self.file_path = file_path
+
+    def add(self,name, weight, handling, deliverd_to_address, sent_from_address,email, time,contact_method):
+        tracking_id = ''.join(random.choices(string.ascii_letters + string.digits,k = 20))
+        
+        with open(self.file_path, "r") as file:
+             data = json.load(file)
+
+        with open('/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json',"r") as file:
+            login_data = json.load(file)
+
+        delivery_agents = []
+        for key, value in login_data.items():
+            if value[2] == "delivery_agent":
+                delivery_agents.append(key)
+
+        delivery_agent_email = random.choice(delivery_agents)
+        delivery_agent_name = login_data[str(delivery_agent_email)][3]
+
+        data[tracking_id]["Name"] = name
+        data[tracking_id]["Weight"] = weight + "KG"
+        data[tracking_id]["Handling"] = handling
+        data[tracking_id]["Deliverd_to_address"] = deliverd_to_address
+        data[tracking_id]["Sent_from_address"] = sent_from_address
+        data[tracking_id]["Status"] = "Not Delivered"
+        data[tracking_id]["Email"] = email
+        data[tracking_id]["Time"] = time
+        data[tracking_id]["Contact_method"] = contact_method
+        data[tracking_id]["Delivery_agent_email"] = delivery_agent_email
+        data[tracking_id]["Delivery_agent_name"] = delivery_agent_name
+
+        with open(self.file_path, "w") as file:
+            json.dump(data, file, indent=4)
+
