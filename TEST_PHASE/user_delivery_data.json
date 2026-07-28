@@ -1,14 +1,16 @@
 {
     "12345": {
-        "name": "Ronaldo",
-        "sent_from_address": "Portugal",
-        "deliverd_to_address": "Argentina",
-        "phone": "9514521452",
-        "weight": "4 KG",
-        "email": "idk@gmail.com",
-        "status": "Not Delivered",
-        "time": "Evening",
-        "contact_method": "Email",
+        "Name": "Ronaldo",
+        "Weight": "4 KG",
+        "Handling": "Safe",
+        "Delivered_to_address": "Argentina",
+        "Recceiver's Phone Number": "951465115452",
+        "Recceiver's Email": "hello@gmail.com",
+        "Sent_from_address": "Portugal",
+        "Status": "Not Delivered",
+        "Email": "idk@gmail.com",
+        "Time": "Evening",
+        "Contact_method": "Email",
         "Delivery_agent_email": "who@gmail.com",
         "Delivery_agent_name": "Hari"
     }

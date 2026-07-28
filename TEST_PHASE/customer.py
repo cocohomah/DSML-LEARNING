@@ -10,7 +10,7 @@ DATA_FILE = "/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_delivery_data.j
 customer = customer(DATA_FILE)
 
 window = Tk()
-window.geometry("800x700")
+window.geometry("800x1000")
 window.title("NSM_Courriers")
 window.config(background="#333333")
 
@@ -124,6 +124,68 @@ def change_password_customer(email,customer = customer):
     back = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Back", font=("Arial", 12), command=customer_main_menu)
     back.pack(pady=10)
 
+def add_new_item(email,customer = customer):
+    clear_window()
+    frame = new_frame()
+    item_name_label = Label(frame, text="Item Name:", font=("Arial", 12), fg ="#FFFFFF", bg="#333333")
+    item_name_label.pack(pady=10)
+    entry_item_name = Entry(frame, font=("Arial", 12))
+    entry_item_name.pack(pady=5)
+
+    weight_label = Label(frame, text="Weight:", font=("Arial", 12), fg ="#FFFFFF", bg="#333333")
+    weight_label.pack(pady=10)
+    entry_weight = Entry(frame, font=("Arial", 12))
+    entry_weight.pack(pady=5)
+
+
+    handling_label = Label(frame, text="Handling Cautions:", font=("Arial", 12), fg ="#FFFFFF", bg="#333333")
+    handling_label.pack(pady=10)
+    entry_handling = Entry(frame, font=("Arial", 12))
+    entry_handling.pack(pady=5)
+
+
+
+    delivery_address_label = Label(frame, text="Delivery Address:", font=("Arial", 12), fg ="#FFFFFF", bg="#333333")
+    delivery_address_label.pack(pady=10)
+    entry_delivery_address = Entry(frame, font=("Arial", 12))
+    entry_delivery_address.pack(pady=5)
+
+
+
+    sending_address_label = Label(frame, text="Sending Address:", font=("Arial", 12), fg ="#FFFFFF", bg="#333333")
+    sending_address_label.pack(pady=10)
+    entry_sending_address = Entry(frame, font=("Arial", 12))
+    entry_sending_address.pack(pady=5)
+
+
+    time_label = Label(frame, text="Time of Delivery:", font=("Arial", 12), fg ="#FFFFFF", bg="#333333")
+    time_label.pack(pady=10)
+    entry_time = Entry(frame, font=("Arial", 12))
+    entry_time.pack(pady=5)
+
+    contact_method_label = Label(frame, text="Contact Method:", font=("Arial", 12), fg ="#FFFFFF", bg="#333333")
+    contact_method_label.pack(pady=10)
+    entry_contact_method = Entry(frame, font=("Arial", 12))
+    entry_contact_method.pack(pady=5)
+
+    number_of_recceiver_label = Label(frame, text="Recceiver's Number:", font=("Arial", 12), fg ="#FFFFFF", bg="#333333")
+    number_of_recceiver_label.pack(pady=10)
+    entry_number_of_recceiver = Entry(frame, font=("Arial", 12))
+    entry_number_of_recceiver.pack(pady=5)
+
+
+    email_of_recceiver_label = Label(frame, text="Recceiver's Email:", font=("Arial", 12), fg ="#FFFFFF", bg="#333333")
+    email_of_recceiver_label.pack(pady=10)
+    entry_email_of_recceiver = Entry(frame, font=("Arial", 12))
+    entry_email_of_recceiver.pack(pady=5)
+
+
+    button_add_item = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Add Item", font=("Arial", 12), command=lambda: customer.add(entry_item_name.get(),entry_weight.get(),entry_handling.get(),entry_delivery_address.get(),entry_sending_address.get(),email,entry_time.get(),entry_contact_method.get(),entry_number_of_recceiver.get(),entry_email_of_recceiver.get()))
+    button_add_item.pack(pady=10)
+
+    back = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Back", font=("Arial", 12), command=customer_main_menu)
+    back.pack(pady=10)
+
 
 def customer_main_menu():
     clear_window()
@@ -136,7 +198,8 @@ def customer_main_menu():
     button_search = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Search Item", font=("Arial", 12), command=item_search)
     button_search.pack(pady=10)
 
-
+    button_add = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Add New Item", font=("Arial", 12), command= lambda: add_new_item(email))
+    button_add.pack(pady=10)
 
     button_change_password = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Change Password", font=("Arial", 12), command=lambda: change_password_customer(email))
     button_change_password.pack(pady=10)

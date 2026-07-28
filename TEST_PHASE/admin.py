@@ -2,6 +2,7 @@ from roles import Admin
 from tkinter import *
 import json
 import sys
+import pandas as pd
 
 email = sys.argv[1]
 
@@ -230,11 +231,64 @@ def change_password_admin(email,admin = admin):
     back = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Back", font=("Arial", 12), command=main_admin_menu)
     back.pack(pady=10)
 
+def backup(DATAFILE):
+    rows = []
+    with open(DATAFILE,'r')as f:
+      data = json.load(f)
+    for customer_id, details in data.items():
+        row = {"customer_id": customer_id}
+        row.update(details)
+        rows.append(row)
 
+
+    df = pd.DataFrame(rows)
+
+
+    df.to_csv("customers.csv", index=False)
+
+def add_employee():
+    clear_window()
+    frame = new_frame()
+
+    Label(frame, text="Add Employee", bg="#333333", fg="#FF3399",
+          font=("Arial", 30, 'bold')).pack(pady=20)
     
+    name_label = Label(frame, text="Name:", bg="#333333", fg="white")
+    name_label.pack(pady=10)
+    name = Entry(frame, font=("Arial", 16))
+    name.pack(pady=10)
+
+    email_label = Label(frame, text="Email:", bg="#333333", fg="white")
+    email_label.pack(pady=10)
+    email = Entry(frame, font=("Arial", 16))
+    email.pack(pady=10)
+
+    phone_label = Label(frame, text="Phone:", bg="#333333", fg="white")
+    phone_label.pack(pady=10)
+    phone = Entry(frame, font=("Arial", 16))
+    phone.pack(pady=10)
+
+    password_label = Label(frame, text="Password:", bg="#333333", fg="white")
+    password_label.pack(pady=10)
+    password = Entry(frame, show="*", font=("Arial", 16))
+    password.pack(pady=10)
+
+    def add_agent():
+        with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json", "r") as f:
+            data = json.load(f)
+        if email.get() in data:
+            Label(frame, text="*Email already exists*", bg="#333333", fg="red").pack(pady=10)
+        else:
+            data[email.get()] = [phone.get(), password.get(), "delivery_agent",name.get()]
+            with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json", "w") as f:
+                json.dump(data, f, indent=4)
+            Label(frame, text="*Agent Added*", bg="#333333", fg="green").pack(pady=10)
+
+    Button(frame, text="ADD", command=add_agent,
+           bg="#FF3399", fg="white", font=("Arial", 16)).pack(pady=20)
 
 
-def main_admin_menu():
+def main_admin_menu(DATAFILE):
     clear_window()
     frame = new_frame()
 
@@ -244,6 +298,12 @@ def main_admin_menu():
 
     button_search = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Search item", font=("Arial", 12), command=tracking_id_search)
     button_search.pack(pady=10)
+
+    button_backup = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Backup Customer Details", font=("Arial", 12), command=lambda: backup(DATAFILE))
+    button_backup.pack(pady=10)
+
+    button_add_employee = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Add New Delivery Agent", font=("Arial", 12), command=add_employee)
+    button_add_employee.pack(pady=10)
 
     button_change_password = Button(frame,bg="#FF3399", fg="#FFFFFF", text="Change Password", font=("Arial", 12), command=lambda: change_password_admin(email))
     button_change_password.pack(pady=10)
@@ -256,7 +316,7 @@ def main_admin_menu():
 
     
 
-main_admin_menu()
+main_admin_menu(DATA_FILE)
 
 window.mainloop()
 

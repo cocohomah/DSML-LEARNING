@@ -15,10 +15,11 @@ def clear_window():
 
 def new_frame():
     frame = Frame(window, bg="#333333")
+
     frame.pack(fill=BOTH, expand=True)
     return frame
 
-# --- Tabs ---
+
 def login_tab():
     clear_window()
     frame = new_frame()

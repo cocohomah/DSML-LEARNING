@@ -256,7 +256,7 @@ class customer(BaseUser):
 
         self.file_path = file_path
 
-    def add(self,name, weight, handling, deliverd_to_address, sent_from_address,email, time,contact_method):
+    def add(self,name, weight, handling, delivered_to_address, sent_from_address,email, time,contact_method,number_of_recceiver,email_of_recceiver):
         tracking_id = ''.join(random.choices(string.ascii_letters + string.digits,k = 20))
         
         with open(self.file_path, "r") as file:
@@ -273,10 +273,13 @@ class customer(BaseUser):
         delivery_agent_email = random.choice(delivery_agents)
         delivery_agent_name = login_data[str(delivery_agent_email)][3]
 
+        data[tracking_id]={}
         data[tracking_id]["Name"] = name
         data[tracking_id]["Weight"] = weight + "KG"
         data[tracking_id]["Handling"] = handling
-        data[tracking_id]["Deliverd_to_address"] = deliverd_to_address
+        data[tracking_id]["Delivered_to_address"] = delivered_to_address
+        data[tracking_id]["Recceiver's Phone Number"]=number_of_recceiver
+        data[tracking_id]["Recceiver's Email"]=email_of_recceiver
         data[tracking_id]["Sent_from_address"] = sent_from_address
         data[tracking_id]["Status"] = "Not Delivered"
         data[tracking_id]["Email"] = email
