@@ -38,7 +38,7 @@ def login_tab():
     password.pack(pady=10)
 
     def login_check(user, pwd):
-        with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json", "r") as f:
+        with open("/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_login_data.json", "r") as f:
             data = json.load(f)
 
         if user not in data:
@@ -49,11 +49,11 @@ def login_tab():
             Label(frame, text="*Loading*", bg="#333333", fg="green").pack(pady=10)
             role = data[user][2]
             if role == "admin":
-                subprocess.Popen([sys.executable, "DSML-LEARNING/TEST_PHASE/admin.py", user])
+                subprocess.Popen([sys.executable, "DSML-LEARNING/Courrier_APP/admin.py", user])
             elif role == "customer":
-                subprocess.Popen([sys.executable, "DSML-LEARNING/TEST_PHASE/customer.py", user])
+                subprocess.Popen([sys.executable, "DSML-LEARNING/Courrier_APP/customer.py", user])
             elif role == "delivery_agent":
-                subprocess.Popen([sys.executable, "DSML-LEARNING/TEST_PHASE/delivery_agent.py", user])
+                subprocess.Popen([sys.executable, "DSML-LEARNING/Courrier_APP/delivery_agent.py", user])
             window.destroy()
 
     Button(frame, text="Login", command=lambda: login_check(email.get(), password.get()),
@@ -93,13 +93,13 @@ def signup_tab():
     password.pack(pady=10)
 
     def signup_action():
-        with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json", "r") as f:
+        with open("/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_login_data.json", "r") as f:
             data = json.load(f)
         if email.get() in data:
             Label(frame, text="*Email already exists*", bg="#333333", fg="red").pack(pady=10)
         else:
             data[email.get()] = [phone.get(), password.get(), "customer",name.get()]
-            with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json", "w") as f:
+            with open("/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_login_data.json", "w") as f:
                 json.dump(data, f, indent=4)
             Label(frame, text="*Signup Successful*", bg="#333333", fg="green").pack(pady=10)
 
@@ -132,7 +132,7 @@ def forgot_tab():
     new_pwd.pack(pady=10)
 
     def reset_password():
-        with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json", "r") as f:
+        with open("/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_login_data.json", "r") as f:
             data = json.load(f)
         if email.get() not in data:
             Label(frame, text="*Email not found*", bg="#333333", fg="red").pack(pady=10)
@@ -140,7 +140,7 @@ def forgot_tab():
             Label(frame, text="*Phone mismatch*", bg="#333333", fg="red").pack(pady=10)
         else:
             data[email.get()][1] = new_pwd.get()
-            with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json", "w") as f:
+            with open("/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_login_data.json", "w") as f:
                 json.dump(data, f, indent=4)
             Label(frame, text="*Password Updated*", bg="#333333", fg="green").pack(pady=10)
 

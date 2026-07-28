@@ -5,7 +5,7 @@ import json
 
 email = sys.argv[1]
 
-DATA_FILE = "/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_delivery_data.json"
+DATA_FILE = "/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_delivery_data.json"
 
 customer = customer(DATA_FILE)
 

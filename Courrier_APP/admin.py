@@ -7,17 +7,17 @@ import pandas as pd
 email = sys.argv[1]
 
 
-DATA_FILE = "/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_delivery_data.json"
+DATA_FILE = "/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_delivery_data.json"
 
 admin = Admin(DATA_FILE)
 
 window = Tk()
-window.geometry("800x700")
+window.geometry("800x800")
 window.title("NSM_Courriers")
 window.config(background="#333333")
 
 def tracking_item_fields(tracking_id):
-    with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_delivery_data.json","r") as f:
+    with open("/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_delivery_data.json","r") as f:
         my_dict = json.load(f) 
     
     keys_string = " ".join(str(key) for key in my_dict[tracking_id].keys())
@@ -274,13 +274,13 @@ def add_employee():
     password.pack(pady=10)
 
     def add_agent():
-        with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json", "r") as f:
+        with open("/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_login_data.json", "r") as f:
             data = json.load(f)
         if email.get() in data:
             Label(frame, text="*Email already exists*", bg="#333333", fg="red").pack(pady=10)
         else:
             data[email.get()] = [phone.get(), password.get(), "delivery_agent",name.get()]
-            with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json", "w") as f:
+            with open("/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_login_data.json", "w") as f:
                 json.dump(data, f, indent=4)
             Label(frame, text="*Agent Added*", bg="#333333", fg="green").pack(pady=10)
 

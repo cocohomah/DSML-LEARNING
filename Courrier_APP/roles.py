@@ -42,14 +42,14 @@ class BaseUser:
         return json.dumps(customer, indent=4)
 
     def change_password(self,email, new_password):
-        with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json") as file:
+        with open("/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_login_data.json") as file:
             data = json.load(file)
         data[email][1] = new_password
-        with open("/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json", "w") as file:
+        with open("/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_login_data.json", "w") as file:
             json.dump(data, file, indent=4)
 
     def logout(self,window):
-            subprocess.Popen([sys.executable, "/home/coder/Documents/DSML-LEARNING/TEST_PHASE/login_system.py"])
+            subprocess.Popen([sys.executable, "/home/coder/Documents/DSML-LEARNING/Courrier_APP/login_system.py"])
             window.destroy()
 
 class Admin(BaseUser):
@@ -262,7 +262,7 @@ class customer(BaseUser):
         with open(self.file_path, "r") as file:
              data = json.load(file)
 
-        with open('/home/coder/Documents/DSML-LEARNING/TEST_PHASE/user_login_data.json',"r") as file:
+        with open('/home/coder/Documents/DSML-LEARNING/Courrier_APP/user_login_data.json',"r") as file:
             login_data = json.load(file)
 
         delivery_agents = []
