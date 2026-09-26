@@ -39,3 +39,8 @@ Day 013 : Introduction To OOP -> CLASS, OBJECT, CONSTRUCTOR (__INIT__), SELF PAR
 
 Day 014 : Class review, Method Overloading, Inheritance, SUPER() function and Method Resolution Order (MRO)
 
+Day 015 : Method Overriding, Abstraction, Encapsulation
+
+Day 016 : Isinstance and Polymorphism
+
+Day 017 : Magic Methods, File handling and Conversion, Duck Typing
