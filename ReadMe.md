@@ -44,3 +44,5 @@ Day 015 : Method Overriding, Abstraction, Encapsulation
 Day 016 : Isinstance and Polymorphism
 
 Day 017 : Magic Methods, File handling and Conversion, Duck Typing
+
+Day -4- : Installation of UV package manager and building custom packages and modules.
